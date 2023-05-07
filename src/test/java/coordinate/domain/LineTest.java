@@ -2,6 +2,7 @@ package coordinate.domain;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -20,12 +21,14 @@ public class LineTest {
     }
 
     @Test
-    void Line의길이를계산() {
+    @DisplayName("라인의 길이를 계산")
+    void calculateLineTest() {
         assertThat(line.area()).isEqualTo(2.828, offset(0.00099));
     }
 
     @AfterEach
-    void Line초기화() {
+    @DisplayName("라인 초기화")
+    void resetLine() {
         line = null;
     }
 }

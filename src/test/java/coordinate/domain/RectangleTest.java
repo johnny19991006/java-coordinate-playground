@@ -2,6 +2,7 @@ package coordinate.domain;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -22,12 +23,14 @@ public class RectangleTest {
     }
 
     @Test
-    void 직사각형생성() {
+    @DisplayName("직사각형 생성")
+    void createRectangleTest() {
         assertThat(rectangle).isEqualTo(new Rectangle(points));
     }
 
     @Test
-    void 직사각형생성오류() {
+    @DisplayName("직사각형생성 오류")
+    void createRectangleErrorTest() {
         List<Point> illegalPoints = Arrays.asList(new Point(1, 1), new Point(1, 3)
                 , new Point(3, 1), new Point(3, 5));
         assertThrows(IllegalArgumentException.class, () -> {
@@ -36,12 +39,14 @@ public class RectangleTest {
     }
 
     @Test
-    void 직사각형넓이계산() {
+    @DisplayName("직사각형넓이계산")
+    void calculateRectangleTest() {
         assertThat(rectangle.area()).isEqualTo(28);
     }
 
     @AfterEach
-    void 직사각형초기화() {
+    @DisplayName("사각형 초기화")
+    void resetRectangle() {
         points = null;
         rectangle = null;
     }

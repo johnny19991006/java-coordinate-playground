@@ -2,6 +2,7 @@ package coordinate.domain;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -19,14 +20,16 @@ public class FigureDeterminantTest {
     }
 
     @Test
-    void null입력에대한예외처리() {
+    @DisplayName("null 입력에 대한 예외처리")
+    void nullExceptionTest() {
         assertThrows(IllegalArgumentException.class, () -> {
             FigureDeterminant.create(null);
         });
     }
 
     @Test
-    void point1개입력에대한예외처리() {
+    @DisplayName("point1개 입력에 대한 예외처리")
+    void point1ExceptionTest() {
         points.add(new Point(1, 2));
         assertThrows(IllegalArgumentException.class, () -> {
             FigureDeterminant.create(points);
@@ -34,7 +37,8 @@ public class FigureDeterminantTest {
     }
 
     @Test
-    void point5개이상입력에대한예외처리() {
+    @DisplayName("point5개 이상 입력에 대한 예외처리")
+    void point5ExceptionTest() {
         points.add(new Point(1, 2));
         points.add(new Point(3, 5));
         points.add(new Point(5, 6));
@@ -46,14 +50,16 @@ public class FigureDeterminantTest {
     }
 
     @Test
-    void point가2개일경우_Line생성() {
+    @DisplayName("point가2개일경우 Line생성")
+    void point2ExceptionTest() {
         points.add(new Point(1, 2));
         points.add(new Point(3, 4));
         assertThat(FigureDeterminant.create(points)).isEqualTo(new Line(points));
     }
 
     @Test
-    void point가3개일경우_Triangle생성() {
+    @DisplayName("point가3개일경우 Triangle생성")
+    void point3ExceptionTest() {
         points.add(new Point(1, 2));
         points.add(new Point(3, 4));
         points.add(new Point(4, 7));
@@ -61,7 +67,8 @@ public class FigureDeterminantTest {
     }
 
     @Test
-    void point가4개일경우_Rectangle생성() {
+    @DisplayName("point가4개일경우 Rectangle생성")
+    void point4ExceptionTest() {
         points.add(new Point(1, 2));
         points.add(new Point(3, 4));
         points.add(new Point(1, 4));
@@ -70,7 +77,8 @@ public class FigureDeterminantTest {
     }
 
     @AfterEach
-    void point초기화() {
+    @DisplayName("포인트 리셋")
+    void resetPoint() {
         points = null;
     }
 }
