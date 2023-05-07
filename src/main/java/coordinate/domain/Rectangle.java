@@ -5,12 +5,13 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Function;
 
+import static coordinate.util.ErrorMessage.ERROR_INVALID_RECTANGLE;
+import static coordinate.util.OutputMessage.OUTPUT_AREA_OF_RECTANGLE;
 import static java.util.stream.Collectors.toSet;
 
 public class Rectangle extends AbstractFigure {
-    private static final String ERROR_INVALID_RECTANGLE = "직사각형 모양이 아닙니다.";
-    private static final String OUTPUT_AREA_OF_RECTANGLE = "사각형의 넓이는 ";
-    private static final int NUM_OF_TYPES_OF_RECTANGLE_COORDINATES = 2;
+
+    private static final int NUM_RECTANGLE = 2;
 
     Rectangle(List<Point> points) {
         super(points);
@@ -22,7 +23,7 @@ public class Rectangle extends AbstractFigure {
         Set<Integer> yValuesOfPoints = convertToUniqueYValues(points);
 
         if (hasNotTwoPoints(xValuesOfPoints) || hasNotTwoPoints(yValuesOfPoints)) {
-            throw new IllegalArgumentException(ERROR_INVALID_RECTANGLE);
+            throw new IllegalArgumentException(ERROR_INVALID_RECTANGLE.getMessage());
         }
     }
 
@@ -41,7 +42,7 @@ public class Rectangle extends AbstractFigure {
     }
 
     private boolean hasNotTwoPoints(Set<Integer> valuesOfPoints) {
-        return valuesOfPoints.size() != NUM_OF_TYPES_OF_RECTANGLE_COORDINATES;
+        return valuesOfPoints.size() != NUM_RECTANGLE;
     }
 
     @Override
@@ -50,7 +51,7 @@ public class Rectangle extends AbstractFigure {
         int differenceOfXValues = calculateDifference(convertToUniqueXValues(points));
         int differenceOfYValues = calculateDifference(convertToUniqueYValues(points));
 
-        return (double) (differenceOfXValues * differenceOfYValues);
+        return differenceOfXValues * differenceOfYValues;
     }
 
     private int calculateDifference(Set<Integer> valuesOfPoints) {
@@ -60,6 +61,6 @@ public class Rectangle extends AbstractFigure {
 
     @Override
     public String getAreaInfo() {
-        return OUTPUT_AREA_OF_RECTANGLE + area();
+        return OUTPUT_AREA_OF_RECTANGLE.getMessage() + area();
     }
 }

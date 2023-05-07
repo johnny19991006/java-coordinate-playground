@@ -2,14 +2,15 @@ package coordinate.domain;
 
 import java.util.List;
 
+import static coordinate.util.ErrorMessage.ERROR_INVALID_TRIANGLE;
+import static coordinate.util.OutputMessage.OUTPUT_AREA_OF_TRIANGLE;
+
 public class Triangle extends AbstractFigure {
-    private static final String ERROR_INVALID_TRIANGLE = "삼각형 모양이 아닙니다.";
-    private static final String OUTPUT_AREA_OF_TRIANGLE = "삼각형의 넓이는 ";
 
     Triangle(List<Point> points) {
         super(points);
         if (isInStraightLine(points)) {
-            throw new IllegalArgumentException(ERROR_INVALID_TRIANGLE);
+            throw new IllegalArgumentException(ERROR_INVALID_TRIANGLE.getMessage());
         }
     }
 
@@ -38,6 +39,6 @@ public class Triangle extends AbstractFigure {
 
     @Override
     public String getAreaInfo() {
-        return OUTPUT_AREA_OF_TRIANGLE + area();
+        return OUTPUT_AREA_OF_TRIANGLE.getMessage() + area();
     }
 }

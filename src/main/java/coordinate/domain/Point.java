@@ -2,9 +2,10 @@ package coordinate.domain;
 
 import java.util.Objects;
 
+import static coordinate.util.ErrorMessage.ERROR_OUT_OF_POINT_RANGE;
+
 public class Point {
-    private static final String ERROR_OUT_OF_POINT_RANGE
-            = "잘못된 범위의 입력값입니다. 정수 범위는 " + Point.LOWER_LIMIT + " ~ " + Point.UPPER_LIMIT + " 사이의 수로 입력해 주세요.";
+
     public static final int LOWER_LIMIT = 1;
     public static final int UPPER_LIMIT = 24;
     private final int x;
@@ -18,7 +19,7 @@ public class Point {
 
     private void checkRangeOf(int x, int y) {
         if (exceedRange(x) || exceedRange(y)) {
-            throw new IllegalArgumentException(ERROR_OUT_OF_POINT_RANGE);
+            throw new IllegalArgumentException(ERROR_OUT_OF_POINT_RANGE.getMessage());
         }
     }
 
@@ -30,7 +31,7 @@ public class Point {
         if (this.x == point.x) {
             return Double.MAX_VALUE;
         }
-        return Math.abs((double) (this.y - point.y) / (this.x - point.x));
+        return Math.abs((this.y - point.y) / (this.x - point.x));
     }
 
     public double calculateDistance(Point point) {

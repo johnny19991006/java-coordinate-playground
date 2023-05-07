@@ -2,8 +2,9 @@ package coordinate.domain;
 
 import java.util.List;
 
+import static coordinate.util.OutputMessage.OUTPUT_AREA_OF_LINE;
+
 public class Line extends AbstractFigure {
-    private static final String OUTPUT_AREA_OF_LINE = "두 점 사이의 거리는 ";
 
     Line(List<Point> points) {
         super(points);
@@ -16,6 +17,6 @@ public class Line extends AbstractFigure {
 
     @Override
     public String getAreaInfo() {
-        return OUTPUT_AREA_OF_LINE + area();
+        return OUTPUT_AREA_OF_LINE.getMessage() + area();
     }
 }
