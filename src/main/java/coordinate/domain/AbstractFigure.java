@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import static coordinate.util.ErrorMessage.ERROR_FIGURE_NULL;
 
-public class AbstractFigure implements Figure {
+public abstract class AbstractFigure implements Figure {
 
     private final List<Point> points;
 
@@ -19,16 +19,6 @@ public class AbstractFigure implements Figure {
     @Override
     public List<Point> getPoints() {
         return points;
-    }
-
-    @Override
-    public double area() {
-        return 0;
-    }
-
-    @Override
-    public String getAreaInfo() {
-        return null;
     }
 
     @Override
